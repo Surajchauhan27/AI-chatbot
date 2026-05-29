@@ -98,7 +98,7 @@ async function callGemini(message, history) {
 
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-2.0-flash',
     systemInstruction: SYSTEM_PROMPT,
   });
 
@@ -111,7 +111,7 @@ async function callGemini(message, history) {
   const result = await chat.sendMessage(message);
   return {
     reply: result.response.text(),
-    model: 'Gemini 1.5 Flash',
+    model: 'Gemini 2.0 Flash',
   };
 }
 
