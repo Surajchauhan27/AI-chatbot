@@ -26,8 +26,9 @@ const LoginPage = () => {
       return;
     }
     setLoading(true);
+    const API_URL = import.meta.env.VITE_API_URL || '';
     try {
-      const { data } = await axios.post('/api/auth/login', form);
+      const { data } = await axios.post(`${API_URL}/api/auth/login`, form);
       login({ name: data.name, email: form.email, token: data.token });
       toast.success(`Welcome back, ${data.name}!`);
       navigate('/chat');

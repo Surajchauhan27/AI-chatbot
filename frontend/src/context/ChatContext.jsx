@@ -65,7 +65,8 @@ export const ChatProvider = ({ children }) => {
 
     try {
       const token = localStorage.getItem('aurabot_token') || 'demo';
-      const res = await fetch('/api/chat', {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${API_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ message: content, chatId: cid, history: [] }),

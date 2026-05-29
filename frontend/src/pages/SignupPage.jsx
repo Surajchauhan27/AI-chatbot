@@ -64,8 +64,9 @@ const SignupPage = () => {
     if (form.password !== form.confirm) { setError('Passwords do not match.'); return; }
     if (form.password.length < 6) { setError('Password must be at least 6 characters.'); return; }
     setLoading(true);
+    const API_URL = import.meta.env.VITE_API_URL || '';
     try {
-      const { data } = await axios.post('/api/auth/signup', { name: form.name, email: form.email, password: form.password });
+      const { data } = await axios.post(`${API_URL}/api/auth/signup`, { name: form.name, email: form.email, password: form.password });
       login({ name: form.name, email: form.email, token: data.token });
       toast.success(`Welcome to AuraBot, ${form.name}! 🎉`);
       navigate('/chat');
