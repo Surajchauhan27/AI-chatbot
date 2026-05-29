@@ -1,0 +1,23 @@
+# Render Blueprint Specification File
+# This file automates the creation of the AuraBot Backend Web Service on Render.com.
+# Learn more at: https://render.com/docs/blueprints
+
+services:
+  - type: web
+    name: aurabot-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true # Render will automatically generate a secure, random string for you!
+      - key: GEMINI_API_KEY
+        sync: false # Render will prompt you to paste your Google Gemini API key securely.
+      - key: FRONTEND_URL
+        sync: false # Render will prompt you to enter your deployed Netlify/Vercel URL.
