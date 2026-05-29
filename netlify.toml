@@ -1,0 +1,17 @@
+# Root Netlify Configuration File
+
+[build]
+  # Navigate to the React frontend folder inside the repo
+  base = "frontend"
+  
+  # Directory containing the static assets after build
+  publish = "dist"
+  
+  # Build command to compile our Vite application
+  command = "npm run build"
+
+# Single Page Application routing rules for React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
